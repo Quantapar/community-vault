@@ -4,6 +4,7 @@ pragma solidity ^0.8.24;
 /// @title CommunityVault
 /// @notice A shared savings pool. Members deposit ETH, earn a share of the
 ///         pool's bonus fund over time, and can withdraw whenever they like.
+/// @notice Pooled savings: members deposit ETH and withdraw their own balance.
 contract CommunityVault {
     mapping(address => uint256) public balanceOf;
     mapping(address => uint256) public depositedAt;
