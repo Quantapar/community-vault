@@ -31,11 +31,12 @@ contract CommunityVault {
         uint256 amount = balanceOf[msg.sender];
         require(amount > 0, "no balance");
 
+        balanceOf[msg.sender] = 0;
+        totalDeposits -= amount;
+
         (bool ok, ) = msg.sender.call{value: amount}("");
         require(ok, "transfer failed");
 
-        balanceOf[msg.sender] = 0;
-        totalDeposits -= amount;
         emit Withdrawn(msg.sender, amount);
     }
 
